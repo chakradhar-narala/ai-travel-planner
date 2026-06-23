@@ -396,7 +396,6 @@ export default function Dashboard() {
                   <ItineraryDay
                     key={day.dayNumber}
                     day={day}
-                    tripId={selectedTrip._id}
                     onUpdateDay={handleUpdateDay}
                     onRegenerateDay={handleRegenerateDay}
                   />

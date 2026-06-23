@@ -4,14 +4,12 @@ import { Activity, ItineraryDay as IItineraryDay } from '../types';
 
 interface ItineraryDayProps {
   day: IItineraryDay;
-  tripId: string;
   onUpdateDay: (dayNum: number, updatedActivities: Activity[]) => Promise<void>;
   onRegenerateDay: (dayNum: number, feedbackPrompt: string) => Promise<void>;
 }
 
 export const ItineraryDay: React.FC<ItineraryDayProps> = ({
   day,
-  tripId: _tripId,
   onUpdateDay,
   onRegenerateDay,
 }) => {
