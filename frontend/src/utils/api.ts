@@ -13,13 +13,15 @@ const request = async (endpoint: string, options: FetchOptions = {}) => {
     ...(options.headers || {}),
   };
 
+  const { body, ...restOptions } = options;
+
   const config: RequestInit = {
-    ...options,
+    ...(restOptions as RequestInit),
     headers,
   };
 
-  if (options.body) {
-    config.body = JSON.stringify(options.body);
+  if (body) {
+    config.body = JSON.stringify(body);
   }
 
   const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
