@@ -16,7 +16,7 @@ const request = async (endpoint: string, options: FetchOptions = {}) => {
   const { body, ...restOptions } = options;
 
   const config: RequestInit = {
-    ...restOptions,
+    ...(restOptions as RequestInit),
     headers,
   };
 
