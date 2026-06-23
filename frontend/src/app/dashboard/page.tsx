@@ -170,7 +170,7 @@ export default function Dashboard() {
     router.push('/login');
   };
 
-  if (authLoading || (tripsLoading && trips.length === 0)) {
+  if (authLoading) {
     return (
       <div className="flex flex-col justify-center items-center h-screen bg-slate-950 text-slate-100">
         <Loader className="w-8 h-8 animate-spin text-indigo-500 mb-4" />
@@ -210,7 +210,7 @@ export default function Dashboard() {
             </div>
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transitio[...]
             >
               <LogOut className="w-3.5 h-3.5" />
               Sign Out
@@ -244,7 +244,11 @@ export default function Dashboard() {
             </div>
 
             <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin">
-              {trips.length === 0 ? (
+              {tripsLoading ? (
+                <div className="flex justify-center items-center py-8">
+                  <Loader className="w-5 h-5 animate-spin text-indigo-400" />
+                </div>
+              ) : trips.length === 0 ? (
                 <div className="text-center py-12 text-slate-500 space-y-2">
                   <p className="text-xs">No active travel itineraries found.</p>
                   <button
@@ -343,7 +347,7 @@ export default function Dashboard() {
           {selectedTrip ? (
             <>
               {/* Trip Metadata Header */}
-              <div className="bg-gradient-to-r from-blue-950/20 to-indigo-950/20 border border-indigo-500/10 rounded-3xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-950/20 to-indigo-950/20 border border-indigo-500/10 rounded-3xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 relati[...]
                 {/* Highlight glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
 
@@ -416,7 +420,7 @@ export default function Dashboard() {
               </div>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-indigo-600/10 flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all"
+                className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-indigo-600[...]
               >
                 <Plus className="w-3.5 h-3.5" />
                 Create First Trip
